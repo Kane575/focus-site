@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FOCUS Audit & Conseil | Expertise Comptable & Audit à Paris</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href__="https://fonts.googleapis.com">
+  <link rel="preconnect" href__="https://fonts.gstatic.com" crossorigin>
+  <link href__="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    /* Scroll Progress Bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, #10b981, #3b82f6);
+      z-index: 9999;
+      transition: width 0.1s ease;
+    }
+    
+    /* Hero Animation */
+    @keyframes slowZoom {
+      from { transform: scale(1.15); }
+      to { transform: scale(1); }
+    }
+    
+    .animate-zoom {
+      animation: slowZoom 25s ease-out forwards;
+    }
+    
+    /* Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Floating Animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    /* Pulse Glow */
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+    
+    .animate-pulse-glow {
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+    
+    /* Card Hover Effects */
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Service Card Hover */
+    .service-card {
+      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    
+    .service-card:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+    
+    /* Navbar Blur */
+    .navbar-blur {
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    
+    .mobile-menu.active {
+      max-height: 500px;
+    }
+    
+    /* Gradient Text */
+    .gradient-text {
+      background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Button Hover Shine */
+    .btn-shine {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-shine::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .btn-shine:hover::before {
+      left: 100%;
+    }
+
+    /* Partner Logo Animation */
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .partner-logo {
+      transition: all 0.3s ease;
+    }
+
+    .partner-logo:hover {
+      transform: scale(1.1);
+      filter: grayscale(0%) brightness(1.1);
+    }
+
+    /* Infinite Scroll Animation */
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .animate-scroll {
+      animation: scroll 30s linear infinite;
+    }
+
+    .animate-scroll:hover {
+      animation-play-state: paused;
+    }
+
+    /* Scrollbar Styling */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+@keyframes zoom {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
+</style>
+</head>
+<body class="bg-white text-slate-900 antialiased">
+<!-- Splash Screen -->
+<div id="splash-screen" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-500">
+  <img src="img/logo.png" alt="Logo FOCUS" class="w-40 animate-[zoom_2s_ease-in-out]">
+</div>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="progress-bar"></div>
+
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-5 md:py-6">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center gap-2.5">
+          <img class="w-28" src="img/logo.png" alt="Logo FOCUS">
+        <div class="flex flex-col">
+          <span class="text-4xl md:text-xl font-extrabold text-white tracking-tight">FOCUS</span>
+          <span class="text-[8px] md:text-[9px] uppercase tracking-[0.2em] text-emerald-400 font-bold -mt-0.5">Audit & Conseil</span>
+        </div>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-xs font-bold text-white/80 hover:text-white transition-colors tracking-wider relative group">
+          À PROPOS
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#expertise" class="text-xs font-bold text-white/80 hover:text-white transition-colors tracking-wider relative group">
+          EXPERTISE
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#services" class="text-xs font-bold text-white/80 hover:text-white transition-colors tracking-wider relative group">
+          SERVICES
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#partners" class="text-xs font-bold text-white/80 hover:text-white transition-colors tracking-wider relative group">
+          PARTENAIRES
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#contact" class="text-xs font-bold text-white/80 hover:text-white transition-colors tracking-wider relative group">
+          CONTACT
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="blog.php" class="text-xs font-bold text-white/80 hover:text-white transition-colors tracking-wider relative group">
+          BLOG
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#contact" class="px-6 py-2.5 bg-white text-slate-900 rounded-full text-xs font-bold hover:bg-emerald-50 hover:shadow-lg transition-all duration-300 btn-shine">
+          CONSULTATION
+        </a>
+        <a href="simulateur.html" class="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-blue-500 text-white rounded-full text-xs font-bold hover:bg-emerald-50 hover:shadow-lg transition-all duration-300 btn-shine">
+          SIMULATEURS
+        </a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button id="mobile-toggle" class="md:hidden text-white p-2">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu md:hidden bg-slate-900/95 backdrop-blur-xl border-b border-white/10">
+      <div class="px-4 py-6 flex flex-col gap-4">
+        <a href="#about" class="text-sm font-bold text-white/80 hover:text-white py-2 transition-colors">À PROPOS</a>
+        <a href="#expertise" class="text-sm font-bold text-white/80 hover:text-white py-2 transition-colors">EXPERTISE</a>
+        <a href="#services" class="text-sm font-bold text-white/80 hover:text-white py-2 transition-colors">SERVICES</a>
+        <a href="#partners" class="text-sm font-bold text-white/80 hover:text-white py-2 transition-colors">PARTENAIRES</a>
+        <a href="#contact" class="text-sm font-bold text-white/80 hover:text-white py-2 transition-colors">CONTACT</a>
+        <a href="blog.php" class="text-sm font-bold text-white/80 hover:text-white py-2 transition-colors">BLOG</a>
+        <a href="#contact" class="mt-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-blue-500 text-white rounded-full text-sm font-bold text-center">
+          CONSULTATION GRATUITE
+        </a>
+        <a href="simulateur.html" class="mt-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-blue-500 text-white rounded-full text-sm font-bold text-center">
+           SIMULATEURS
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background -->
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=90&w=2000"
+        alt="Architecture moderne"
+        class="w-full h-full object-cover animate-zoom"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-slate-900/40 to-slate-900/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/10 to-blue-900/10"></div>
+    </div>
+
+    <!-- Floating Orbs -->
+    <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl animate-pulse-glow"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse-glow" style="animation-delay: 1s;"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-5xl mx-auto px-4 md:px-6 text-center reveal active">
+      <div class="inline-flex items-center gap-2.5 px-5 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full mb-8">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-[11px] font-bold text-white/90 tracking-[0.15em] uppercase">
+          Expertise comptable & audit à Paris
+        </span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.05] mb-6">
+        Croissance <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-300">Humaine</span>,<br />
+        Impact <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">Positif</span>.
+      </h1>
+
+      <p class="text-base md:text-lg lg:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed px-4">
+        Chez Focus, nous sommes bien plus qu'un cabinet d'expertise comptable et d'audit.
+        Société à mission, notre engagement est d'inspirer le changement, favoriser l'équité
+        et contribuer au mieux-être de la société.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-full font-bold text-sm hover:shadow-2xl hover:shadow-emerald-500/30 hover:-translate-y-0.5 transition-all duration-300 btn-shine">
+          Découvrir Notre Mission
+        </a>
+        <a href="#services" class="w-full sm:w-auto px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-bold text-sm hover:bg-white/20 transition-all duration-300">
+          Nos Solutions
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
+      <div class="flex flex-col items-center gap-2 cursor-pointer" onclick="document.querySelector('#stats').scrollIntoView({behavior: 'smooth'})">
+        <span class="text-[10px] uppercase tracking-widest text-white/40 font-bold">Scroll</span>
+        <i data-lucide="arrow-down" class="w-4 h-4 text-white/40"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section id="stats" class="relative -mt-14 md:-mt-16 z-20 px-4">
+    <div class="max-w-6xl mx-auto bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-2xl reveal">
+      <div class="grid grid-cols-2 lg:grid-cols-4">
+        <div class="text-center py-4 md:py-6 border-r border-white/10">
+          <div class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-emerald-400 counter" data-target="10">0</div>
+          <p class="text-[9px] md:text-[10px] uppercase tracking-[0.15em] text-white/50 font-bold mt-2">Mois d'excellence</p>
+        </div>
+        <div class="text-center py-4 md:py-6 border-r border-white/10">
+          <div class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white counter" data-target="150">0</div>
+          <p class="text-[9px] md:text-[10px] uppercase tracking-[0.15em] text-white/50 font-bold mt-2">Clients partenaires</p>
+        </div>
+        <div class="text-center py-4 md:py-6 border-r border-white/10">
+          <div class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-blue-400 counter" data-target="100">0</div>
+          <p class="text-[9px] md:text-[10px] uppercase tracking-[0.15em] text-white/50 font-bold mt-2">% Conformité</p>
+        </div>
+        <div class="text-center py-4 md:py-6">
+          <div class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white counter" data-target="12">0</div>
+          <p class="text-[9px] md:text-[10px] uppercase tracking-[0.15em] text-white/50 font-bold mt-2">Experts passionnés</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 md:py-32 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 md:gap-20 items-center mb-20">
+        <!-- Text -->
+        <div class="space-y-6 reveal">
+          <span class="text-emerald-500 font-bold text-xs tracking-[0.2em] uppercase">Notre Raison d'Être</span>
+          <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+            Cabinet d'expertise comptable<br />
+            <span class="gradient-text">et d'audit</span>
+          </h2>
+          <h3 class="text-xl md:text-2xl font-bold text-slate-800">Votre réussite, notre priorité</h3>
+          <p class="text-slate-500 leading-relaxed text-base">
+            Chez Focus, nous nous dédions à l'excellence et à l'engagement social.
+            Fondé en janvier 2024 et basé à Paris, notre cabinet travaille avec des PME,
+            des ETI et des associations à travers toute la France. Nous favorisons un
+            environnement propice à l'épanouissement professionnel, et nous nous engageons
+            à contribuer de manière significative au bien-être collectif.
+          </p>
+
+          <div class="flex flex-wrap gap-2.5 pt-4">
+            <span class="px-4 py-2 rounded-full text-sm font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100 hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition-all duration-300 cursor-default">Intégrité</span>
+            <span class="px-4 py-2 rounded-full text-sm font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100 hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition-all duration-300 cursor-default">Éthique</span>
+            <span class="px-4 py-2 rounded-full text-sm font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100 hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition-all duration-300 cursor-default">Diversité</span>
+            <span class="px-4 py-2 rounded-full text-sm font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100 hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition-all duration-300 cursor-default">Engagement environnemental</span>
+          </div>
+        </div>
+
+        <!-- Image -->
+        <div class="relative reveal">
+          <div class="absolute -inset-4 bg-gradient-to-tr from-emerald-500/15 to-blue-500/15 rounded-3xl blur-2xl"></div>
+          <div class="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl group">
+            <img
+              src="img/ff.png"
+              alt="Architecture moderne"
+              class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent flex items-end p-6 md:p-8">
+              <div>
+                <p class="text-white text-xl md:text-2xl font-bold">Focus Excellence</p>
+                <p class="text-white/70 text-sm font-medium">Paris • Depuis 2024</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mission Quote -->
+      <div class="max-w-4xl mx-auto bg-gradient-to-br from-slate-50 to-emerald-50/30 p-8 md:p-12 rounded-2xl md:rounded-3xl border-l-4 border-emerald-500 relative overflow-hidden reveal">
+        <div class="absolute top-0 right-0 w-40 h-40 bg-emerald-500/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <i data-lucide="target" class="w-10 h-10 md:w-12 md:h-12 text-emerald-500 mb-4"></i>
+        <p class="text-lg md:text-xl font-light italic text-slate-600 leading-relaxed relative z-10">
+          "Notre mission est d'inspirer le changement, favoriser l'équité et contribuer
+          au mieux-être de la société à travers une expertise comptable et d'audit d'excellence."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audit Expertise -->
+  <section id="expertise" class="py-20 md:py-32 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <!-- Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14 md:mb-20 reveal">
+        <span class="text-blue-500 font-bold text-xs tracking-[0.2em] uppercase">Notre Expertise</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight mt-3">
+          Expertise en <span class="gradient-text">Audit</span>
+        </h2>
+        <p class="text-lg text-slate-500 mt-4">Garantissez la sincérité de vos comptes avec Focus</p>
+      </div>
+
+      <!-- Cards -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16">
+        <div class="reveal bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 card-hover">
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center mb-5">
+            <i data-lucide="file-check" class="w-6 h-6 text-emerald-500"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-slate-900">Audit légal</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Certification des comptes annuels et consolidés selon les normes en vigueur.</p>
+        </div>
+        <div class="reveal bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 card-hover">
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center mb-5">
+            <i data-lucide="file-signature" class="w-6 h-6 text-emerald-500"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-slate-900">Audit contractuel</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Missions spécifiques adaptées à vos besoins contractuels.</p>
+        </div>
+        <div class="reveal bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 card-hover">
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center mb-5">
+            <i data-lucide="alert-octagon" class="w-6 h-6 text-emerald-500"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-slate-900">Missions exceptionnelles</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Audits ponctuels, due diligence, évaluations d'entreprises.</p>
+        </div>
+        <div class="reveal bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 card-hover">
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center mb-5">
+            <i data-lucide="cpu" class="w-6 h-6 text-emerald-500"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-slate-900">Audit des SI</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Sécurisation et optimisation de votre infrastructure IT.</p>
+        </div>
+      </div>
+
+      <!-- RSE Banner -->
+      <div class="reveal bg-gradient-to-r from-emerald-600 to-blue-600 p-8 md:p-12 rounded-2xl md:rounded-3xl text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-72 h-72 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4"></div>
+
+        <div class="grid md:grid-cols-2 gap-8 items-center relative z-10">
+          <div>
+            <i data-lucide="leaf" class="w-10 h-10 md:w-12 md:h-12 mb-4 opacity-90"></i>
+            <h3 class="text-2xl md:text-3xl font-bold mb-3">RSE</h3>
+            <p class="text-white/85 text-base leading-relaxed">
+              Nous évaluons la conformité de votre entreprise aux normes éthiques,
+              environnementales et sociales et identifions des opportunités d'amélioration.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-white/10 backdrop-blur-sm p-4 md:p-5 rounded-xl border border-white/10 hover:bg-white/20 transition-all duration-300">
+              <i data-lucide="globe" class="w-5 h-5 mb-2 opacity-90"></i>
+              <p class="font-semibold text-sm">Environnement</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm p-4 md:p-5 rounded-xl border border-white/10 hover:bg-white/20 transition-all duration-300">
+              <i data-lucide="users" class="w-5 h-5 mb-2 opacity-90"></i>
+              <p class="font-semibold text-sm">Social</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm p-4 md:p-5 rounded-xl border border-white/10 hover:bg-white/20 transition-all duration-300">
+              <i data-lucide="shield" class="w-5 h-5 mb-2 opacity-90"></i>
+              <p class="font-semibold text-sm">Gouvernance</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm p-4 md:p-5 rounded-xl border border-white/10 hover:bg-white/20 transition-all duration-300">
+              <i data-lucide="heart" class="w-5 h-5 mb-2 opacity-90"></i>
+              <p class="font-semibold text-sm">Éthique</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accounting Services -->
+  <section id="services" class="py-20 md:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14 md:mb-20 reveal">
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+          Expertise comptable <span class="gradient-text">chez Focus</span>
+        </h2>
+        <p class="text-lg text-slate-500 mt-4">Notre approche : expertise humaine et digitale</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div class="reveal service-card group p-6 md:p-8 rounded-2xl bg-slate-50 hover:bg-emerald-500 transition-all duration-500 cursor-default border border-slate-100 hover:border-transparent hover:shadow-xl">
+          <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-5 shadow-sm group-hover:bg-white/20 transition-all duration-300">
+            <i data-lucide="calculator" class="w-6 h-6 text-emerald-500 group-hover:text-white transition-colors duration-300"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-slate-900 group-hover:text-white transition-colors duration-300">Comptabilité</h3>
+          <p class="text-slate-500 text-sm leading-relaxed group-hover:text-white/90 transition-colors duration-300">Gestion comptable précise et sécurisée pour favoriser votre croissance.</p>
+        </div>
+        <div class="reveal service-card group p-6 md:p-8 rounded-2xl bg-slate-50 hover:bg-blue-500 transition-all duration-500 cursor-default border border-slate-100 hover:border-transparent hover:shadow-xl">
+          <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-5 shadow-sm group-hover:bg-white/20 transition-all duration-300">
+            <i data-lucide="users" class="w-6 h-6 text-blue-500 group-hover:text-white transition-colors duration-300"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-slate-900 group-hover:text-white transition-colors duration-300">Social</h3>
+          <p class="text-slate-500 text-sm leading-relaxed group-hover:text-white/90 transition-colors duration-300">Suivi méticuleux des obligations sociales pour une conformité totale.</p>
+        </div>
+        <div class="reveal service-card group p-6 md:p-8 rounded-2xl bg-slate-50 hover:bg-emerald-500 transition-all duration-500 cursor-default border border-slate-100 hover:border-transparent hover:shadow-xl">
+          <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-5 shadow-sm group-hover:bg-white/20 transition-all duration-300">
+            <i data-lucide="trending-up" class="w-6 h-6 text-emerald-500 group-hover:text-white transition-colors duration-300"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-slate-900 group-hover:text-white transition-colors duration-300">Fiscal</h3>
+          <p class="text-slate-500 text-sm leading-relaxed group-hover:text-white/90 transition-colors duration-300">Accompagnement rigoureux sur les obligations fiscales.</p>
+        </div>
+        <div class="reveal service-card group p-6 md:p-8 rounded-2xl bg-slate-50 hover:bg-blue-500 transition-all duration-500 cursor-default border border-slate-100 hover:border-transparent hover:shadow-xl">
+          <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-5 shadow-sm group-hover:bg-white/20 transition-all duration-300">
+            <i data-lucide="scale" class="w-6 h-6 text-blue-500 group-hover:text-white transition-colors duration-300"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-slate-900 group-hover:text-white transition-colors duration-300">Juridique</h3>
+          <p class="text-slate-500 text-sm leading-relaxed group-hover:text-white/90 transition-colors duration-300">Guidance professionnelle pour vos démarches juridiques.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners Section - HORIZONTAL SCROLL -->
+  <!-- Partners Section - HORIZONTAL SCROLL -->
+    <!-- Partners Section - HORIZONTAL SCROLL -->
+  <section id="partners" class="py-20 md:py-32 bg-slate-50 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 mb-12 reveal">
+
+    </div>
+
+    <!-- Infinite Scroll Container -->
+    <div class="relative flex overflow-x-hidden">
+      <!-- First set -->
+      <div class="flex animate-scroll gap-6 md:gap-8 px-4 md:px-8">
+        <!-- France -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/france.png" alt="France" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">Gouvernement</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">République Française</p>
+          </div>
+        </div>
+
+        <!-- Impôts -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/impot.png" alt="Impôts" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">DGFiP</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Direction Générale des Finances Publiques</p>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/info.jpg" alt="Info" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">Service Public</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Information Administrative</p>
+          </div>
+        </div>
+
+        <!-- Journal -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/journal.jpg" alt="Journal Officiel" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">Journal Officiel</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Législation Française</p>
+          </div>
+        </div>
+
+        <!-- Légifrance -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/legi.gif" alt="Légifrance" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">Légifrance</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Le service public du droit</p>
+          </div>
+        </div>
+
+        <!-- Net -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/net.webp" alt="Net" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">Service-Public.fr</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Le site officiel</p>
+          </div>
+        </div>
+
+        <!-- Pappers -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/pappers.jpg" alt="Pappers" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">Pappers</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Informations entreprises</p>
+          </div>
+        </div>
+
+        <!-- R -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/R.png" alt="R" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">République Française</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Liberté • Égalité • Fraternité</p>
+          </div>
+        </div>
+
+        <!-- URSSAF -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/urssaf.jpg" alt="URSSAF" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">URSSAF</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Sécurité Sociale</p>
+          </div>
+        </div>
+
+        <!-- Experts Comptables -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/expertc.jpg" alt="Experts Comptables" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">Ordre des Experts-Comptables</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Conseil Supérieur</p>
+          </div>
+        </div>
+
+        <!-- BOFIP -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/bofip.webp" alt="BOFIP" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">BOFIP</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Bulletin Officiel des Finances Publiques</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Duplicate set for seamless loop -->
+      <div class="flex animate-scroll gap-6 md:gap-8 px-4 md:px-8" aria-hidden="true">
+        <!-- France (duplicate) -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/france.png" alt="France" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">Gouvernement</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">République Française</p>
+          </div>
+        </div>
+
+        <!-- Impôts (duplicate) -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/impot.png" alt="Impôts" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">DGFiP</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Direction Générale des Finances Publiques</p>
+          </div>
+        </div>
+
+        <!-- Info (duplicate) -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/info.jpg" alt="Info" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+   
+          </div>
+        </div>
+
+        <!-- Journal (duplicate) -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/journal.jpg" alt="Journal Officiel" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+    
+          </div>
+        </div>
+
+        <!-- Légifrance (duplicate) -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/legi.gif" alt="Légifrance" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">Légifrance</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Le service public du droit</p>
+          </div>
+        </div>
+
+        <!-- Net (duplicate) -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/net.webp" alt="Net" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">Service-Public.fr</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Le site officiel</p>
+          </div>
+        </div>
+
+        <!-- Pappers (duplicate) -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/pappers.jpg" alt="Pappers" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">Pappers</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Informations entreprises</p>
+          </div>
+        </div>
+
+        <!-- R (duplicate) -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/R.png" alt="R" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">République Française</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Liberté • Égalité • Fraternité</p>
+          </div>
+        </div>
+
+        <!-- URSSAF (duplicate) -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/urssaf.jpg" alt="URSSAF" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">URSSAF</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Sécurité Sociale</p>
+          </div>
+        </div>
+
+        <!-- Experts Comptables (duplicate) -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/expertc.jpg" alt="Experts Comptables" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">Ordre des Experts-Comptables</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Conseil Supérieur</p>
+          </div>
+        </div>
+
+        <!-- BOFIP (duplicate) -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex items-center justify-center partner-logo w-[200px] md:w-[260px] min-h-[220px]" style="filter: grayscale(100%);">
+          <div class="text-center">
+            <img src="img/bofip.webp" alt="BOFIP" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 object-contain">
+            <p class="text-sm md:text-base font-bold text-slate-700">BOFIP</p>
+            <p class="text-[10px] md:text-xs text-slate-400 mt-1">Bulletin Officiel des Finances Publiques</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Creation -->
+  <section class="py-20 md:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div class="reveal">
+          <span class="text-emerald-500 font-bold text-xs tracking-[0.2em] uppercase">Accompagnement</span>
+          <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight mt-3 mb-8">
+            Création d'entreprise<br />
+            <span class="gradient-text text-2xl md:text-3xl">Lancez votre entreprise en toute confiance</span>
+          </h2>
+
+          <div class="space-y-6">
+            <div class="flex gap-4 group">
+              <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 font-bold text-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-300">1</div>
+              <div>
+                <h4 class="text-lg font-bold mb-1 text-slate-900">Premier entretien</h4>
+                <p class="text-slate-500 text-sm leading-relaxed">Nous vous offrons un premier entretien pour comprendre vos besoins et vous orienter.</p>
+              </div>
+            </div>
+            <div class="flex gap-4 group">
+              <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 font-bold text-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-300">2</div>
+              <div>
+                <h4 class="text-lg font-bold mb-1 text-slate-900">Orientation personnalisée</h4>
+                <p class="text-slate-500 text-sm leading-relaxed">Analyse de votre projet et identification des démarches administratives.</p>
+              </div>
+            </div>
+            <div class="flex gap-4 group">
+              <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 font-bold text-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-300">3</div>
+              <div>
+                <h4 class="text-lg font-bold mb-1 text-slate-900">Suivi personnalisé</h4>
+                <p class="text-slate-500 text-sm leading-relaxed">Accompagnement continu tout au long de votre développement.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal bg-white p-8 md:p-12 rounded-2xl md:rounded-3xl shadow-2xl relative overflow-hidden group border border-slate-100">
+          <div class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-emerald-500/10 to-blue-500/10 rounded-full -translate-y-1/2 translate-x-1/4 group-hover:scale-150 transition-transform duration-700"></div>
+          <i data-lucide="rocket" class="w-14 h-14 md:w-16 md:h-16 text-emerald-500 mb-6 relative z-10"></i>
+          <h3 class="text-2xl md:text-3xl font-bold mb-3 text-slate-900 relative z-10">Prêt à vous lancer ?</h3>
+          <p class="text-slate-500 mb-8 leading-relaxed relative z-10">Rencontrons-nous et concrétisons ensemble votre projet entrepreneurial.</p>
+          <a href="#contact" class="relative z-10 inline-block px-8 py-4 bg-gradient-to-r from-emerald-500 to-blue-500 text-white rounded-full font-bold text-sm hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 btn-shine">
+            Prendre rendez-vous
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 md:py-32 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+          Une question ? <span class="gradient-text">Un devis ?</span>
+        </h2>
+        <p class="text-lg text-slate-500 mt-4">Contactez-nous, nous reviendrons vers vous rapidement.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8 md:gap-12">
+        <!-- Left - Info -->
+        <div class="reveal space-y-6">
+          <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-100">
+            <h3 class="text-xl font-bold mb-6 text-slate-900">Nos coordonnées</h3>
+            <div class="space-y-5">
+              <div class="flex gap-4">
+                <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="map-pin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold mb-1 text-slate-900 text-sm">Adresse</h4>
+                  <p class="text-slate-500 text-sm leading-relaxed">38 Rue jean mermoz<br />75008 Paris</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="phone" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold mb-1 text-slate-900 text-sm">Téléphone</h4>
+                  <p class="text-slate-500 text-sm leading-relaxed">Najoua — 06 83 48 24 49<br />Mohamed — 06 83 48 23 59</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="clock" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold mb-1 text-slate-900 text-sm">Horaires</h4>
+                  <p class="text-slate-500 text-sm leading-relaxed">Lun-Ven : 9h00 – 18h00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-emerald-600 to-blue-600 p-6 md:p-8 rounded-2xl text-white relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full"></div>
+            <i data-lucide="calendar" class="w-8 h-8 mb-4 opacity-90 relative z-10"></i>
+            <h4 class="text-xl font-bold mb-2 relative z-10">Consultation gratuite</h4>
+            <p class="text-white/80 text-sm mb-5 relative z-10">Premier entretien sans engagement</p>
+            <a href="#contact" class="relative z-10 inline-block px-6 py-3 bg-white text-slate-900 rounded-full font-bold text-sm hover:shadow-lg transition-all duration-300">
+              Prendre RDV
+            </a>
+          </div>
+        </div>
+
+        <!-- Right - Form -->
+        <div class="reveal bg-slate-900 p-6 md:p-8 lg:p-10 rounded-2xl md:rounded-3xl relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-60 h-60 bg-emerald-500/5 rounded-full -translate-y-1/2 translate-x-1/3"></div>
+          <h3 class="text-xl font-bold text-white mb-6 relative z-10">Envoyez-nous un message</h3>
+
+          <form id="contact-form" class="space-y-4 relative z-10">
+            <select id="sujet" class="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white text-sm outline-none focus:border-emerald-500 transition-all appearance-none">
+              <option value="" class="bg-slate-900">Sélectionnez un sujet</option>
+              <option value="Audit & Conseil" class="bg-slate-900">Audit & Conseil</option>
+              <option value="Expertise comptable" class="bg-slate-900">Expertise comptable</option>
+              <option value="Création d'entreprise" class="bg-slate-900">Création d'entreprise</option>
+            </select>
+
+            <input type="text" id="nom" placeholder="Nom *" required class="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white text-sm outline-none focus:border-emerald-500 transition-all placeholder:text-white/30" />
+            <input type="tel" id="telephone" placeholder="Téléphone *" required class="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white text-sm outline-none focus:border-emerald-500 transition-all placeholder:text-white/30" />
+            <input type="email" id="email" placeholder="Email *" required class="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white text-sm outline-none focus:border-emerald-500 transition-all placeholder:text-white/30" />
+            <textarea rows="4" id="message" placeholder="Message *" required class="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white text-sm outline-none focus:border-emerald-500 transition-all resize-none placeholder:text-white/30"></textarea>
+
+            <button type="submit" class="w-full py-4 bg-gradient-to-r from-emerald-500 to-blue-500 text-white rounded-xl font-bold text-sm hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 flex items-center justify-center gap-2 btn-shine">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              Envoyer le message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-white pt-16 pb-8 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div class="col-span-2 md:col-span-1">
+          <div class="flex items-center gap-2.5 mb-4">
+            <img src="img/logo.png" alt="Logo FOCUS" class="w-24">
+            <span class="text-xl font-extrabold tracking-tight">FOCUS</span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Expertise comptable & audit à Paris.<br />Société à mission.
+          </p>
+        </div>
+
+        <div>
+          <h5 class="font-bold mb-4 text-xs tracking-widest uppercase text-white/60">Navigation</h5>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="#about" class="hover:text-white transition-colors">Le Cabinet</a></li>
+            <li><a href="#expertise" class="hover:text-white transition-colors">Expertise</a></li>
+            <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
+            <li><a href="#partners" class="hover:text-white transition-colors">Partenaires</a></li>
+            <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="font-bold mb-4 text-xs tracking-widest uppercase text-white/60">Services</h5>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li class="hover:text-white transition-colors cursor-default">Audit légal</li>
+            <li class="hover:text-white transition-colors cursor-default">Expertise comptable</li>
+            <li class="hover:text-white transition-colors cursor-default">Création d'entreprise</li>
+            <li class="hover:text-white transition-colors cursor-default">RSE</li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="font-bold mb-4 text-xs tracking-widest uppercase text-white/60">Légal</h5>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li class="hover:text-white transition-colors cursor-pointer">Confidentialité</li>
+            <li class="hover:text-white transition-colors cursor-pointer">Mentions Légales</li>
+            <li class="hover:text-white transition-colors cursor-pointer">CGV</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-slate-500">© 2026 FOCUS Audit & Conseil. Tous droits réservés.</p>
+        <div class="flex gap-4">
+          <a href="#" class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center hover:bg-emerald-500/20 transition-colors">
+            <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center hover:bg-blue-500/20 transition-colors">
+            <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <script>
+    // Google Forms integration pour mohamed.kane@focus-ac.fr
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Récupérer les valeurs du formulaire
+      const nom = document.getElementById('nom').value;
+      const email = document.getElementById('email').value;
+      const telephone = document.getElementById('telephone').value;
+      const sujet = document.getElementById('sujet').value;
+      const message = document.getElementById('message').value;
+      
+      // Afficher le chargement
+      const btn = e.target.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<span class="animate-pulse">Envoi en cours...</span>';
+      btn.disabled = true;
+      
+      // Créer l'URL pour Google Forms
+      // Remplacez "VOTRE_FORM_ID" par l'ID de votre formulaire Google
+      const formId = "e/1FAIpQLSfDf5B3XkYpQ8Z9JmRcLqWxYnVzKpRmTnHvGcXbNdFjKmRsT"; // EXEMPLE - À REMPLACER
+      
+      const formData = new FormData();
+      formData.append('entry.123456789', nom); // Remplacez par l'ID de votre champ Nom
+      formData.append('entry.987654321', email); // Remplacez par l'ID de votre champ Email
+      formData.append('entry.456789123', telephone); // Remplacez par l'ID de votre champ Téléphone
+      formData.append('entry.789123456', sujet); // Remplacez par l'ID de votre champ Sujet
+      formData.append('entry.321654987', message); // Remplacez par l'ID de votre champ Message
+      
+      // Envoyer vers Google Forms
+      fetch(`https://docs.google.com/forms/d/${formId}/formResponse`, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      })
+      .then(() => {
+        alert('Message envoyé avec succès ! Nous vous contacterons bientôt sur ' + email);
+        e.target.reset();
+      })
+      .catch((error) => {
+        alert('Erreur lors de l\'envoi. Veuillez réessayer.');
+        console.error('Erreur:', error);
+      })
+      .finally(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        lucide.createIcons();
+      });
+    });
+  </script>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+    });
+
+    // Navbar Scroll Effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        navbar.classList.add('navbar-blur', 'py-3');
+        navbar.classList.remove('py-5', 'md:py-6');
+      } else {
+        navbar.classList.remove('navbar-blur', 'py-3');
+        navbar.classList.add('py-5', 'md:py-6');
+      }
+    });
+
+    // Mobile Menu Toggle
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      lucide.createIcons();
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+      });
+    });
+
+    // Reveal Animation on Scroll
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            
+            // Animate counters when stats section is visible
+            if (entry.target.querySelector('.counter')) {
+              entry.target.querySelectorAll('.counter').forEach(counter => {
+                animateCounter(counter);
+              });
+            }
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '-50px' }
+    );
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // Counter Animation
+    function animateCounter(el) {
+      const target = parseInt(el.getAttribute('data-target'));
+      const duration = 2000;
+      const increment = target / (duration / 16);
+      let current = 0;
+
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          el.textContent = target;
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.ceil(current);
+        }
+      }, 16);
+    }
+
+    // Form Submission
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Simulate form submission
+      const btn = e.target.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+      
+      btn.innerHTML = '<span class="animate-pulse">Envoi en cours...</span>';
+      btn.disabled = true;
+      
+      setTimeout(() => {
+        alert('Message envoyé avec succès ! Nous vous contacterons bientôt.');
+        e.target.reset();
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        lucide.createIcons();
+      }, 1500);
+    });
+
+    // Smooth scroll for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Re-initialize Lucide icons after dynamic content
+    setTimeout(() => {
+      lucide.createIcons();
+    }, 100);
+  </script>
+  <script>
+  window.addEventListener("load", function () {
+    setTimeout(function () {
+      const splash = document.getElementById("splash-screen");
+      splash.classList.add("opacity-0");
+
+      setTimeout(() => {
+        splash.style.display = "none";
+      }, 500); // correspond à duration-500
+    }, 2000); // 2 secondes
+  });
+</script>
+</body>
+</html>
